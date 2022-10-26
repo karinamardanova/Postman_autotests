@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "8adbe9e8-5bf2-4842-8a35-4bfcbf67fd2a",
+		"name": "Тестовое задание",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22434984"
+	},
+	"item": [
+		{
+			"name": "Получение токена",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"qa@qa.qa\",\r\n    \"password\":\"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://partner.agentapp.ru/v1/users/obtain-token",
+					"protocol": "https",
+					"host": [
+						"partner",
+						"agentapp",
+						"ru"
+					],
+					"path": [
+						"v1",
+						"users",
+						"obtain-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание водителя",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "token {{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\": \"Имя\",\r\n  \"last_name\": \"Фамилия\",\r\n  \"patronymic\": \"Отчество\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"driving_experience_started\": \"2010-10-10\",\r\n  \"driver_licenses\": [\r\n    {\r\n      \"credential_type\": \"DRIVER_LICENSE\",\r\n      \"number\": \"012345\",\r\n      \"series\": \"1234\",\r\n      \"issue_date\": \"2010-10-10\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{http_schema}}://{{host}}/{{api_version}}/insured_objects/drivers",
+					"protocol": "{{http_schema}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание собственника",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "token {{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"last_name\": \"Фамилия\",\r\n  \"first_name\": \"Имя\",\r\n  \"patronymic\": \"Отчество\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"credential\": [\r\n    {\r\n      \"credential_type\": \"RUSSIAN_INTERNAL_PASSPORT\",\r\n      \"issue_date\": \"2017-03-08\",\r\n      \"issue_point\": \"УФМС\",\r\n      \"issue_point_code\": \"123-456\",\r\n      \"number\": \"123456\",\r\n      \"series\": \"1234\"\r\n    }\r\n  ],\r\n  \"address\": [\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    },\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"ACTUAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{http_schema}}://{{host}}/v1/insured_objects/owners/natural_persons",
+					"protocol": "{{http_schema}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"insured_objects",
+						"owners",
+						"natural_persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание страхователя",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "token {{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"last_name\": \"Фамилия\",\r\n  \"first_name\": \"Имя\",\r\n  \"patronymic\": \"Отчество\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"credential\": [\r\n    {\r\n      \"credential_type\": \"RUSSIAN_INTERNAL_PASSPORT\",\r\n      \"issue_date\": \"2010-10-10\",\r\n      \"issue_point\": \"УФМС\",\r\n      \"issue_point_code\": \"123-456\",\r\n      \"number\": \"123456\",\r\n      \"series\": \"1234\"\r\n    }\r\n  ],\r\n  \"address\": [\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    },\r\n    {\r\n      \"address_query\": \"г Санкт-Петербург, г Ломоносов, ул Швейцарская, д 1 к 1, кв 1\",\r\n      \"address_type\": \"ACTUAL_ADDRESS\",\r\n      \"region_kladr_id\": \"7800000000000\",\r\n      \"city_kladr_id\": \"7800000600000\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{http_schema}}://{{host}}/{{api_version}}/insured_objects/insurants/natural_persons",
+					"protocol": "{{http_schema}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"insurants",
+						"natural_persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание автомобиля",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "token {{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"car_model_id\": 864026180,\r\n  \"engine_power\": 211,\r\n  \"chassis_number\": null,\r\n  \"car_body_number\": null,\r\n  \"vin_number\": \"WAUZZZ8T4BA037241\",\r\n  \"number_plate\": \"Р904МХ178\",\r\n  \"manufacturing_year\": 2010,\r\n  \"max_mass\": null,\r\n  \"credential\": [\r\n    {\r\n      \"credential_type\": \"VEHICLE_REGISTRATION\",\r\n      \"issue_date\": \"2010-11-01\",\r\n      \"number\": \"267461\",\r\n      \"series\": \"78УН\"\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{http_schema}}://{{host}}/v3/insured_objects/cars",
+					"protocol": "{{http_schema}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v3",
+						"insured_objects",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "http_schema",
+			"value": "https",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "partner.agentapp.ru",
+			"type": "string"
+		},
+		{
+			"key": "api_version",
+			"value": "v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+			"type": "string"
+		}
+	]
+}
